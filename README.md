@@ -7,8 +7,8 @@ A Claude Code skill that runs comprehensive diagnostic analysis on time series d
 ```bash
 pip install pandas numpy matplotlib statsmodels scipy
 
-python3 .claude/skills/analyzing-time-series/scripts/diagnose.py data/retail_sales.csv --output-dir results/
-python3 .claude/skills/analyzing-time-series/scripts/visualize.py data/retail_sales.csv --output-dir results/
+python3 .claude/skills/analyzing-time-series/scripts/diagnose.py example/data/retail_sales.csv --output-dir example/results/
+python3 .claude/skills/analyzing-time-series/scripts/visualize.py example/data/retail_sales.csv --output-dir example/results/
 ```
 
 Or invoke via Claude Code by describing your data — the `analyzing-time-series` skill triggers automatically.
@@ -54,8 +54,10 @@ Both `diagnose.py` and `visualize.py` accept:
 
 ## Sample data
 
-- `data/retail_sales.csv` — 120 monthly observations (Jan 2015–Dec 2024), upward trend, annual seasonality
-- `data/city_data.csv` — 3,871 sparse hourly air quality readings, non-standard columns (`Timestamp`, `PM2.5`)
+- `example/data/retail_sales.csv` — 120 monthly observations (Jan 2015–Dec 2024), upward trend, annual seasonality
+- `example/data/city_data.csv` — 3,871 sparse hourly air quality readings, non-standard columns (`Timestamp`, `PM2.5`)
+- `example/results/` — pre-run diagnostic output and plots for `retail_sales.csv`
+- `example/PROMPT.md` — example prompts for invoking the skill
 
 ## Skill version
 

@@ -69,8 +69,10 @@ Current: **v1.1.0** (`.claude/skills/analyzing-time-series/SKILL.md`)
 
 ## Sample data and evals
 
-- `data/retail_sales.csv` — 120 monthly observations (Jan 2015–Dec 2024), trending, seasonal
-- `data/city_data.csv` — 3,871 hourly air quality readings with columns `Timestamp` and `PM2.5`
+- `example/data/retail_sales.csv` — 120 monthly observations (Jan 2015–Dec 2024), trending, seasonal
+- `example/data/city_data.csv` — 3,871 hourly air quality readings with columns `Timestamp` and `PM2.5`
+- `example/results/` — pre-run diagnostic output and plots for `retail_sales.csv`
+- `example/PROMPT.md` — example prompts for invoking the skill
 
 Eval test cases at `.claude/skills/analyzing-time-series/evals/evals.json` (3 cases).
 Eval workspace and benchmark at `.claude/skills/analyzing-time-series-workspace/` (iter-1: 81%, iter-2: 100%).
