@@ -4,6 +4,8 @@ A Claude Code skill that runs comprehensive diagnostic analysis on time series d
 
 ## Quick start
 
+**Option 1 — Run manually from the CLI:**
+
 ```bash
 pip install pandas numpy matplotlib statsmodels scipy
 
@@ -11,7 +13,9 @@ python3 .claude/skills/analyzing-time-series/scripts/diagnose.py example/data/re
 python3 .claude/skills/analyzing-time-series/scripts/visualize.py example/data/retail_sales.csv --output-dir example/results/
 ```
 
-Or invoke via Claude Code by describing your data — the `analyzing-time-series` skill triggers automatically.
+**Option 2 — Let Claude do it automatically:**
+
+Open Claude Code in this repo and describe your data. The `analyzing-time-series` skill triggers automatically and runs both scripts, then summarizes the findings for you. Example prompt in `example/PROMPT.md`.
 
 ## What it produces
 
