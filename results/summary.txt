@@ -1,0 +1,62 @@
+TIME SERIES DIAGNOSTICS SUMMARY
+============================================================
+
+DATA QUALITY
+------------------------------------------------------------
+Observations: 120
+Date range: 2015-01-01 to 2024-12-01
+Frequency: monthly
+Missing values: 0 (0.0%)
+
+DISTRIBUTION
+------------------------------------------------------------
+Mean: 87131.2667    Median: 88524.5000
+Std:  22759.0687    Min: 33927.0000    Max: 134022.0000
+Skewness: -0.0878    Kurtosis: -0.7220
+
+STATIONARITY
+------------------------------------------------------------
+ADF test: statistic=-0.6415, p=0.8613 -> Non-stationary
+KPSS test: statistic=1.6810, p=0.0100 -> Non-stationary
+Differencing needed: d=1
+Series used for ACF/PACF: differenced_d1
+
+SEASONALITY
+------------------------------------------------------------
+Seasonal: Yes
+Period: 12
+Strength: 0.9459 (strong)
+
+TREND
+------------------------------------------------------------
+Has trend: Yes
+Direction: increasing
+Strength: 0.9837 (strong)
+
+AUTOCORRELATION
+------------------------------------------------------------
+Significant ACF lags: [1, 6, 11, 12, 24, 30, 36]
+Significant PACF lags: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+FORECASTABILITY
+------------------------------------------------------------
+Ljung-Box lag_10: statistic=25.12, p=0.0051
+Ljung-Box lag_20: statistic=118.81, p=0.0000
+Ljung-Box lag_23: statistic=122.60, p=0.0000
+Conclusion: Predictable structure
+Forecastable: Yes
+
+TRANSFORM RECOMMENDATION
+------------------------------------------------------------
+Variance stable: Yes
+Box-Cox optimal lambda: 1.0256
+Recommendation: No transform needed
+Note: Box-Cox λ ≈ 1, no transform needed
+
+============================================================
+QUICK SUMMARY
+============================================================
+Forecastable: YES
+Stationary: NO (d=1)
+Seasonal: YES (period=12)
+Trend: INCREASING
