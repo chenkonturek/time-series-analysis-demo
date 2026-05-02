@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "diagnostics.json contains data_quality.n_observations equal to 120",
+      "passed": true,
+      "evidence": "n_observations = 120"
+    },
+    {
+      "text": "diagnostics.json contains data_quality.frequency equal to 'monthly'",
+      "passed": true,
+      "evidence": "frequency = 'monthly'"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+      "passed": true,
+      "evidence": "is_seasonal = True"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.period equal to 12",
+      "passed": true,
+      "evidence": "period = 12"
+    },
+    {
+      "text": "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to 'increasing'",
+      "passed": true,
+      "evidence": "has_trend=True, direction='increasing'"
+    },
+    {
+      "text": "diagnostics.json contains stationarity.differencing_needed equal to 1",
+      "passed": true,
+      "evidence": "differencing_needed = 1"
+    },
+    {
+      "text": "diagnostics.json contains forecastability.forecastable equal to true",
+      "passed": true,
+      "evidence": "forecastable = True"
+    },
+    {
+      "text": "plots/decomposition.png exists in the output directory",
+      "passed": false,
+      "evidence": "File NOT found"
+    },
+    {
+      "text": "plots/box_by_month.png exists in the output directory",
+      "passed": false,
+      "evidence": "File NOT found"
+    },
+    {
+      "text": "summary.txt exists in the output directory and mentions seasonal period of 12",
+      "passed": true,
+      "evidence": "summary.txt exists=True, mentions 12: True"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 2,
+    "total": 10,
+    "pass_rate": 0.8
+  }
+}

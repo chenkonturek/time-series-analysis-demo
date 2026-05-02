@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "diagnostics.json contains data_quality.frequency equal to 'hourly'",
+      "passed": false,
+      "evidence": "frequency = 'daily'"
+    },
+    {
+      "text": "diagnostics.json contains data_quality.n_observations equal to 3871",
+      "passed": true,
+      "evidence": "n_observations = 3871"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+      "passed": false,
+      "evidence": "is_seasonal = False"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.period equal to 24",
+      "passed": false,
+      "evidence": "period = None"
+    },
+    {
+      "text": "plots/box_by_hour.png exists in the output directory",
+      "passed": false,
+      "evidence": "Not found at /Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series-workspace/iteration-1/hourly-air-quality-columns/with_skill/outputs/plots/box_by_hour.png or /Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series-workspace/iteration-1/hourly-air-quality-columns/with_skill/outputs/box_by_hour.png"
+    },
+    {
+      "text": "plots/box_by_dayofweek.png exists in the output directory",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection",
+      "passed": true,
+      "evidence": "value_col = 'PM2.5'"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 4,
+    "total": 7,
+    "pass_rate": 0.4286
+  }
+}

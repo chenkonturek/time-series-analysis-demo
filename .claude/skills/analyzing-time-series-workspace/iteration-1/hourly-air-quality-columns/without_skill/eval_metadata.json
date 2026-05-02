@@ -1,0 +1,14 @@
+{
+  "eval_id": 2,
+  "eval_name": "hourly-air-quality-columns",
+  "prompt": "I have collected air quality readings in city_data.csv. The timestamps are in a column called Timestamp and the values are in PM2.5. There are about 3800 hourly readings. Can you diagnose this time series and show me the hourly and day-of-week patterns?",
+  "assertions": [
+    "diagnostics.json contains data_quality.frequency equal to hourly",
+    "diagnostics.json contains data_quality.n_observations equal to 3871",
+    "diagnostics.json contains seasonality.is_seasonal equal to true",
+    "diagnostics.json contains seasonality.period equal to 24",
+    "plots/box_by_hour.png exists",
+    "plots/box_by_dayofweek.png exists",
+    "diagnostics_state.json contains value_col equal to PM2.5"
+  ]
+}

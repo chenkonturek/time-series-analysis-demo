@@ -1,0 +1,17 @@
+{
+  "eval_id": 1,
+  "eval_name": "monthly-retail-seasonal",
+  "prompt": "I have monthly retail sales data in retail_sales.csv covering January 2015 through December 2024. Can you run a full time series diagnostic on it and tell me whether it is safe to forecast, what kind of seasonality it has, and whether I need to difference it before fitting a model?",
+  "assertions": [
+    "diagnostics.json contains data_quality.n_observations equal to 120",
+    "diagnostics.json contains data_quality.frequency equal to monthly",
+    "diagnostics.json contains seasonality.is_seasonal equal to true",
+    "diagnostics.json contains seasonality.period equal to 12",
+    "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to increasing",
+    "diagnostics.json contains stationarity.differencing_needed equal to 1",
+    "diagnostics.json contains forecastability.forecastable equal to true",
+    "plots/decomposition.png exists",
+    "plots/box_by_month.png exists",
+    "summary.txt mentions seasonal period of 12"
+  ]
+}

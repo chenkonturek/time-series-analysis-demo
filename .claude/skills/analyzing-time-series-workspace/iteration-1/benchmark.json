@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "skill_name": "analyzing-time-series",
+    "skill_path": "/Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series",
+    "executor_model": "claude-sonnet-4-6",
+    "timestamp": "2026-05-01T00:00:00Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "monthly-retail-seasonal",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains data_quality.n_observations equal to 120",
+          "passed": true,
+          "evidence": "n_observations = 120"
+        },
+        {
+          "text": "diagnostics.json contains data_quality.frequency equal to 'monthly'",
+          "passed": true,
+          "evidence": "frequency = 'monthly'"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+          "passed": true,
+          "evidence": "is_seasonal = True"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.period equal to 12",
+          "passed": true,
+          "evidence": "period = 12"
+        },
+        {
+          "text": "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to 'increasing'",
+          "passed": true,
+          "evidence": "has_trend=True, direction='increasing'"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.differencing_needed equal to 1",
+          "passed": true,
+          "evidence": "differencing_needed = 1"
+        },
+        {
+          "text": "diagnostics.json contains forecastability.forecastable equal to true",
+          "passed": true,
+          "evidence": "forecastable = True"
+        },
+        {
+          "text": "plots/decomposition.png exists in the output directory",
+          "passed": true,
+          "evidence": "File exists"
+        },
+        {
+          "text": "plots/box_by_month.png exists in the output directory",
+          "passed": true,
+          "evidence": "File exists"
+        },
+        {
+          "text": "summary.txt exists in the output directory and mentions seasonal period of 12",
+          "passed": true,
+          "evidence": "summary.txt exists=True, mentions 12: True"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "monthly-retail-seasonal",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 8,
+        "failed": 2,
+        "total": 10,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains data_quality.n_observations equal to 120",
+          "passed": true,
+          "evidence": "n_observations = 120"
+        },
+        {
+          "text": "diagnostics.json contains data_quality.frequency equal to 'monthly'",
+          "passed": true,
+          "evidence": "frequency = 'monthly'"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+          "passed": true,
+          "evidence": "is_seasonal = True"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.period equal to 12",
+          "passed": true,
+          "evidence": "period = 12"
+        },
+        {
+          "text": "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to 'increasing'",
+          "passed": true,
+          "evidence": "has_trend=True, direction='increasing'"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.differencing_needed equal to 1",
+          "passed": true,
+          "evidence": "differencing_needed = 1"
+        },
+        {
+          "text": "diagnostics.json contains forecastability.forecastable equal to true",
+          "passed": true,
+          "evidence": "forecastable = True"
+        },
+        {
+          "text": "plots/decomposition.png exists in the output directory",
+          "passed": false,
+          "evidence": "File NOT found"
+        },
+        {
+          "text": "plots/box_by_month.png exists in the output directory",
+          "passed": false,
+          "evidence": "File NOT found"
+        },
+        {
+          "text": "summary.txt exists in the output directory and mentions seasonal period of 12",
+          "passed": true,
+          "evidence": "summary.txt exists=True, mentions 12: True"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hourly-air-quality-columns",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4286,
+        "passed": 3,
+        "failed": 4,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains data_quality.frequency equal to 'hourly'",
+          "passed": false,
+          "evidence": "frequency = 'daily'"
+        },
+        {
+          "text": "diagnostics.json contains data_quality.n_observations equal to 3871",
+          "passed": true,
+          "evidence": "n_observations = 3871"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+          "passed": false,
+          "evidence": "is_seasonal = False"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.period equal to 24",
+          "passed": false,
+          "evidence": "period = None"
+        },
+        {
+          "text": "plots/box_by_hour.png exists in the output directory",
+          "passed": false,
+          "evidence": "Not found at /Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series-workspace/iteration-1/hourly-air-quality-columns/with_skill/outputs/plots/box_by_hour.png or /Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series-workspace/iteration-1/hourly-air-quality-columns/with_skill/outputs/box_by_hour.png"
+        },
+        {
+          "text": "plots/box_by_dayofweek.png exists in the output directory",
+          "passed": true,
+          "evidence": "File exists"
+        },
+        {
+          "text": "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection",
+          "passed": true,
+          "evidence": "value_col = 'PM2.5'"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hourly-air-quality-columns",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains data_quality.frequency equal to 'hourly'",
+          "passed": true,
+          "evidence": "frequency = 'hourly'"
+        },
+        {
+          "text": "diagnostics.json contains data_quality.n_observations equal to 3871",
+          "passed": true,
+          "evidence": "n_observations = 3871"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+          "passed": true,
+          "evidence": "is_seasonal = True"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.period equal to 24",
+          "passed": true,
+          "evidence": "period = 24"
+        },
+        {
+          "text": "plots/box_by_hour.png exists in the output directory",
+          "passed": true,
+          "evidence": "File exists"
+        },
+        {
+          "text": "plots/box_by_dayofweek.png exists in the output directory",
+          "passed": true,
+          "evidence": "File exists"
+        },
+        {
+          "text": "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection",
+          "passed": true,
+          "evidence": "value_col = 'PM2.5'"
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "white-noise-unforecastable",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains forecastability.is_white_noise equal to true",
+          "passed": true,
+          "evidence": "is_white_noise = True"
+        },
+        {
+          "text": "diagnostics.json contains forecastability.forecastable equal to false",
+          "passed": true,
+          "evidence": "forecastable = False"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.differencing_needed equal to 0",
+          "passed": true,
+          "evidence": "differencing_needed = 0"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.adf_stationary equal to true",
+          "passed": true,
+          "evidence": "adf_stationary = True"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to false",
+          "passed": true,
+          "evidence": "is_seasonal = False"
+        },
+        {
+          "text": "diagnostics.json contains trend.direction equal to 'flat'",
+          "passed": true,
+          "evidence": "direction = 'flat'"
+        },
+        {
+          "text": "The assistant's response contains one of: 'not forecastable', 'white noise', 'no predictable structure', or 'cannot be predicted from history'",
+          "passed": true,
+          "evidence": "Response contains white noise/not forecastable language: True"
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "white-noise-unforecastable",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0,
+        "tokens": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "diagnostics.json contains forecastability.is_white_noise equal to true",
+          "passed": true,
+          "evidence": "is_white_noise = True"
+        },
+        {
+          "text": "diagnostics.json contains forecastability.forecastable equal to false",
+          "passed": true,
+          "evidence": "forecastable = False"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.differencing_needed equal to 0",
+          "passed": true,
+          "evidence": "differencing_needed = 0"
+        },
+        {
+          "text": "diagnostics.json contains stationarity.adf_stationary equal to true",
+          "passed": true,
+          "evidence": "adf_stationary = True"
+        },
+        {
+          "text": "diagnostics.json contains seasonality.is_seasonal equal to false",
+          "passed": true,
+          "evidence": "is_seasonal = False"
+        },
+        {
+          "text": "diagnostics.json contains trend.direction equal to 'flat'",
+          "passed": true,
+          "evidence": "direction = 'flat'"
+        },
+        {
+          "text": "The assistant's response contains one of: 'not forecastable', 'white noise', 'no predictable structure', or 'cannot be predicted from history'",
+          "passed": true,
+          "evidence": "Response contains white noise/not forecastable language: True"
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8095,
+        "stddev": 0.2694,
+        "min": 0.4286,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9333,
+        "stddev": 0.0943,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.1238",
+      "time_seconds": "+0",
+      "tokens": "+0"
+    }
+  },
+  "notes": [
+    "Eval 2 (hourly-air-quality-columns): with_skill FAILS 4/7 assertions due to frequency misclassification. Sparse hourly data (many gaps) causes ts_utils.detect_frequency() to return 'daily' instead of 'hourly', which prevents period=24 seasonality candidates from being evaluated.",
+    "without_skill baseline beats with_skill on eval 2 because baseline hardcodes frequency='hourly' and explicitly runs STL with period=24.",
+    "Eval 1 and 3: skill performs perfectly (10/10 and 7/7), demonstrating strength on canonical monthly and white-noise cases."
+  ]
+}

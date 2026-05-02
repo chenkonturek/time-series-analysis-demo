@@ -1,0 +1,53 @@
+{
+  "skill_name": "analyzing-time-series",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have monthly retail sales data in retail_sales.csv covering January 2015 through December 2024. Can you run a full time series diagnostic on it and tell me whether it's safe to forecast, what kind of seasonality it has, and whether I need to difference it before fitting a model?",
+      "expected_output": "The assistant runs diagnose.py and visualize.py on retail_sales.csv, reports 120 monthly observations, detects annual seasonality (period=12), an increasing trend, recommends d=1 differencing, confirms the series is forecastable, and suggests a SARIMA approach. Presents decomposition.png and box_by_month.png.",
+      "files": ["evals/files/retail_sales.csv"],
+      "expectations": [
+        "diagnostics.json contains data_quality.n_observations equal to 120",
+        "diagnostics.json contains data_quality.frequency equal to 'monthly'",
+        "diagnostics.json contains seasonality.is_seasonal equal to true",
+        "diagnostics.json contains seasonality.period equal to 12",
+        "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to 'increasing'",
+        "diagnostics.json contains stationarity.differencing_needed equal to 1",
+        "diagnostics.json contains forecastability.forecastable equal to true",
+        "plots/decomposition.png exists in the output directory",
+        "plots/box_by_month.png exists in the output directory",
+        "summary.txt exists in the output directory and mentions seasonal period of 12"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I've collected air quality readings in city_data.csv. The timestamps are in a column called 'Timestamp' and the values are in 'PM2.5'. There are about 3,800 hourly readings. Can you diagnose this time series and show me the hourly and day-of-week patterns?",
+      "expected_output": "The assistant auto-detects non-standard column names (Timestamp, PM2.5) without --date-col or --value-col flags, reports frequency=hourly with 3871 observations, detects daily seasonality (period=24), and produces box_by_hour.png and box_by_dayofweek.png.",
+      "files": ["evals/files/city_data.csv"],
+      "expectations": [
+        "diagnostics.json contains data_quality.frequency equal to 'hourly'",
+        "diagnostics.json contains data_quality.n_observations equal to 3871",
+        "diagnostics.json contains seasonality.is_seasonal equal to true",
+        "diagnostics.json contains seasonality.period equal to 24",
+        "plots/box_by_hour.png exists in the output directory",
+        "plots/box_by_dayofweek.png exists in the output directory",
+        "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have a CSV of daily measurements in white_noise.csv. I want to run full diagnostics before I try to build a forecast model — can you tell me whether there's any structure worth modelling?",
+      "expected_output": "The assistant runs diagnose.py on white_noise.csv, reports the series is already stationary (d=0), no seasonality, no trend, and Ljung-Box confirms white noise at all tested lags. The response explicitly tells the user the series is not forecastable and advises against fitting an ARIMA model.",
+      "files": ["evals/files/white_noise.csv"],
+      "expectations": [
+        "diagnostics.json contains forecastability.is_white_noise equal to true",
+        "diagnostics.json contains forecastability.forecastable equal to false",
+        "diagnostics.json contains stationarity.differencing_needed equal to 0",
+        "diagnostics.json contains stationarity.adf_stationary equal to true",
+        "diagnostics.json contains seasonality.is_seasonal equal to false",
+        "diagnostics.json contains trend.direction equal to 'flat'",
+        "The assistant's response contains one of: 'not forecastable', 'white noise', 'no predictable structure', or 'cannot be predicted from history'"
+      ]
+    }
+  ]
+}

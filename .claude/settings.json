@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(mkdir *)",
+      "Bash(pip *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(find *)",
+      "Write",
+      "Read",
+      "Edit"
+    ],
+    "defaultMode": "bypassPermissions"
+  }
+}

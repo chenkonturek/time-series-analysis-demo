@@ -1,0 +1,15 @@
+# Eval workspace outputs (large/generated files)
+.claude/skills/analyzing-time-series-workspace/*/*/outputs/
+.claude/skills/analyzing-time-series-workspace/*/*/with_skill/outputs/
+.claude/skills/analyzing-time-series-workspace/*/*/without_skill/outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local diagnostics output
+diagnostics/
+results/

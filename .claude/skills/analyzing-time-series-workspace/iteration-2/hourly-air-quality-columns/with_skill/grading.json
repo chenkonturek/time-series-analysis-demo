@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "diagnostics.json contains data_quality.frequency equal to 'hourly'",
+      "passed": true,
+      "evidence": "frequency='hourly'"
+    },
+    {
+      "text": "diagnostics.json contains data_quality.n_observations equal to 3871",
+      "passed": true,
+      "evidence": "n_observations=3871"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.is_seasonal equal to true",
+      "passed": true,
+      "evidence": "is_seasonal=True"
+    },
+    {
+      "text": "diagnostics.json contains seasonality.period equal to 24",
+      "passed": true,
+      "evidence": "period=24"
+    },
+    {
+      "text": "plots/box_by_hour.png exists in the output directory",
+      "passed": true,
+      "evidence": "file exists"
+    },
+    {
+      "text": "plots/box_by_dayofweek.png exists in the output directory",
+      "passed": true,
+      "evidence": "file exists"
+    },
+    {
+      "text": "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection",
+      "passed": true,
+      "evidence": "value_col='PM2.5'"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  }
+}

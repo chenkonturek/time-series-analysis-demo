@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "skill_name": "analyzing-time-series",
+    "skill_path": "/Users/chen/PycharmProjects/claude-demo/time-series-analysis-demo/.claude/skills/analyzing-time-series",
+    "iteration": 2,
+    "timestamp": "2026-05-02T00:00:00Z",
+    "change": "Fixed detect_frequency() + added resample_regular() for sparse hourly data",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "monthly-retail-seasonal",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10
+      },
+      "expectations": [
+        {"text": "diagnostics.json contains data_quality.n_observations equal to 120", "passed": true, "evidence": "n_observations=120"},
+        {"text": "diagnostics.json contains data_quality.frequency equal to 'monthly'", "passed": true, "evidence": "frequency='monthly'"},
+        {"text": "diagnostics.json contains seasonality.is_seasonal equal to true", "passed": true, "evidence": "is_seasonal=True"},
+        {"text": "diagnostics.json contains seasonality.period equal to 12", "passed": true, "evidence": "period=12"},
+        {"text": "diagnostics.json contains trend.has_trend equal to true and trend.direction equal to 'increasing'", "passed": true, "evidence": "has_trend=True, direction='increasing'"},
+        {"text": "diagnostics.json contains stationarity.differencing_needed equal to 1", "passed": true, "evidence": "differencing_needed=1"},
+        {"text": "diagnostics.json contains forecastability.forecastable equal to true", "passed": true, "evidence": "forecastable=True"},
+        {"text": "plots/decomposition.png exists in the output directory", "passed": true, "evidence": "file exists"},
+        {"text": "plots/box_by_month.png exists in the output directory", "passed": true, "evidence": "file exists"},
+        {"text": "summary.txt exists in the output directory and mentions seasonal period of 12", "passed": true, "evidence": "'12' found in summary.txt"}
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "monthly-retail-seasonal",
+      "configuration": "without_skill (iteration-1 baseline)",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 8,
+        "failed": 2,
+        "total": 10
+      },
+      "notes": "Carried forward from iteration-1. Skill adds plots that baseline skips."
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hourly-air-quality-columns",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7
+      },
+      "expectations": [
+        {"text": "diagnostics.json contains data_quality.frequency equal to 'hourly'", "passed": true, "evidence": "frequency='hourly' (was 'daily' in iteration-1)"},
+        {"text": "diagnostics.json contains data_quality.n_observations equal to 3871", "passed": true, "evidence": "n_observations=3871"},
+        {"text": "diagnostics.json contains seasonality.is_seasonal equal to true", "passed": true, "evidence": "is_seasonal=True (was False in iteration-1)"},
+        {"text": "diagnostics.json contains seasonality.period equal to 24", "passed": true, "evidence": "period=24 (was None in iteration-1)"},
+        {"text": "plots/box_by_hour.png exists in the output directory", "passed": true, "evidence": "file exists (missing in iteration-1)"},
+        {"text": "plots/box_by_dayofweek.png exists in the output directory", "passed": true, "evidence": "file exists"},
+        {"text": "diagnostics_state.json contains value_col equal to 'PM2.5' confirming non-standard column auto-detection", "passed": true, "evidence": "value_col='PM2.5'"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hourly-air-quality-columns",
+      "configuration": "without_skill (iteration-1 baseline)",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7
+      },
+      "notes": "Carried forward from iteration-1. Skill now matches baseline on all assertions."
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "white-noise-unforecastable",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6
+      },
+      "expectations": [
+        {"text": "diagnostics.json contains forecastability.is_white_noise equal to true", "passed": true, "evidence": "is_white_noise=True"},
+        {"text": "diagnostics.json contains forecastability.forecastable equal to false", "passed": true, "evidence": "forecastable=False"},
+        {"text": "diagnostics.json contains stationarity.differencing_needed equal to 0", "passed": true, "evidence": "differencing_needed=0"},
+        {"text": "diagnostics.json contains stationarity.adf_stationary equal to true", "passed": true, "evidence": "adf_stationary=True"},
+        {"text": "diagnostics.json contains seasonality.is_seasonal equal to false", "passed": true, "evidence": "is_seasonal=False"},
+        {"text": "diagnostics.json contains trend.direction equal to 'flat'", "passed": true, "evidence": "direction='flat'"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "white-noise-unforecastable",
+      "configuration": "without_skill (iteration-1 baseline)",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6
+      },
+      "notes": "Carried forward from iteration-1."
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "iteration_1": {"mean_pass_rate": 0.8095, "eval_scores": [1.0, 0.4286, 1.0]},
+      "iteration_2": {"mean_pass_rate": 1.0,    "eval_scores": [1.0, 1.0,    1.0]},
+      "delta": "+0.1905 (+23.5% relative improvement)"
+    },
+    "without_skill_baseline": {
+      "mean_pass_rate": 0.9333,
+      "eval_scores": [0.8, 1.0, 1.0]
+    }
+  },
+  "notes": [
+    "Iteration-2 changes: (1) detect_frequency() now uses 10th-pctile gap instead of median to handle sparse hourly data. (2) Added resample_regular() which fills irregular hourly/daily series to a regular grid before ACF and STL. (3) detect_seasonal_period() and analyze_seasonality()/analyze_trend() both resample before computation.",
+    "Eval 2 improved from 3/7 (43%) to 7/7 (100%): frequency now correctly 'hourly', period=24 detected, decomposition.png generated, box_by_hour.png present.",
+    "Eval 1 and 3 unchanged at 10/10 and 6/6 — regression-free.",
+    "Overall skill pass rate: 81% → 100% across the three eval suite."
+  ]
+}
