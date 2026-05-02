@@ -6,12 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Run diagnostics:**
 ```bash
-python3 scripts/diagnose.py data.csv --output-dir results/
+python3 .claude/skills/analyzing-time-series/scripts/diagnose.py data.csv --output-dir results/
 ```
 
 **Generate plots** (run after diagnose.py — reads diagnostics_state.json for synchronization):
 ```bash
-python3 scripts/visualize.py data.csv --output-dir results/
+python3 .claude/skills/analyzing-time-series/scripts/visualize.py data.csv --output-dir results/
 ```
 
 Both scripts accept:
